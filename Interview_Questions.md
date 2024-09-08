@@ -149,22 +149,83 @@ A: Be prepared for answer, you need to have atleast 3-4 on top of your head, so 
 1)GitHub Integration Plugin
 Purpose: Enhances Jenkins' interaction with GitHub, including webhooks and automatic builds from GitHub actions or commits.
 Why it's useful: This plugin integrates Jenkins with GitHub repositories and can trigger builds based on GitHub events like pull requests, commits, or merges.
+
 2). Docker Plugin
 Purpose: Manages Jenkins jobs within Docker containers.
 Why it's useful: Great for creating isolated build environments and managing dependencies using Docker images. Supports building, running, and managing Docker containers as part of a CI/CD process.
+
 3). Credentials Binding Plugin
 Purpose: Manages credentials securely within Jenkins.
 Why it's useful: Provides secure handling of sensitive information such as passwords, tokens, or SSH keys, avoiding hard-coded credentials in job configurations or pipelines.
+
 4). NodeJS Plugin
 Purpose: Allows Jenkins to execute Node.js scripts and integrate with the Node.js environment.
 Why it's useful: Useful for building JavaScript applications, managing Node.js versions, and running npm commands as part of your build pipeline.
+
 5)Email Extension Plugin
 Purpose: Extends Jenkins email notifications with more detailed control over when and how emails are sent.
 Why it's useful: You can customize email alerts for build status, failures, or specific job stages to notify developers or teams based on triggers.
+
 6)SonarQube Plugin
 Purpose: Integrates Jenkins with SonarQube for static code analysis.
 Why it's useful: Automates code quality checks, ensuring adherence to coding standards and identifying security vulnerabilities or technical debt.
+
 7). Kubernetes Plugin
 Purpose: Facilitates running Jenkins agents on Kubernetes clusters.
 Why it's useful: Enables dynamic scaling of Jenkins agents on Kubernetes, providing elasticity in handling build jobs by provisioning containers as agents on demand.
+
+Additional questions:
+
+Q)what is your deployment startegy?
+Ans:
+A)Blue-Green deployment: Blue-Green Deployment is a release management strategy that reduces downtime and risk by running two identical production environments, often referred to as Blue and Green. Here’s how it works:
+
+Key Concepts of Blue-Green Deployment:
+Two Production Environments:
+
+The Blue environment represents the current live version of the application.
+The Green environment is the new version of the application where new code or updates are deployed.
+Switching Traffic:
+
+Once the Green environment is fully deployed, tested, and confirmed stable, traffic is gradually shifted from Blue to Green, making Green the live environment.
+Fallback:
+
+If something goes wrong after switching, traffic can be quickly reverted to the Blue environment (the previous version), minimizing downtime and risks associated with failures.
+
+Steps in Blue-Green Deployment:
+Deploy to Green: New version of the application is deployed to the Green environment while Blue continues handling live traffic.
+Test Green: The Green environment is tested to ensure functionality and stability.
+Switch Traffic: Once Green is ready, traffic is switched from Blue to Green, making Green the live production environment.
+Monitor and Rollback (if needed): If issues arise, switch back to the Blue environment (the previous stable version).
+Retire Blue: If no issues are found, Blue can eventually be decommissioned or updated for future deployments.
+
+B)Canary deployment: Canary Deployment is a progressive release strategy where a new version of an application is gradually rolled out to a small subset of users before making it fully available to the entire user base. This approach helps minimize risk by exposing only a small portion of users to potential issues in the new version.
+
+Key Concepts of Canary Deployment:
+Incremental Rollout:
+
+The new version is initially deployed to a small group of users (the "canary group"), while the majority of traffic is still directed to the old version.
+If the new version performs well and no major issues arise, the deployment is expanded to more users in phases.
+Monitoring and Validation:
+
+During the canary phase, the performance, error rates, and other key metrics of the new version are closely monitored.
+If any issues are detected, the deployment can be paused or rolled back, and the new version is fixed before wider deployment.
+Rollback Capabilities:
+
+If the canary version has significant issues, it's easy to revert to the old, stable version by redirecting traffic back to it.
+Steps in Canary Deployment:
+Deploy New Version to Canary Group: The new version is deployed to a small group of users or instances (e.g., 5% of users).
+Monitor and Analyze: System performance, user feedback, and logs are monitored for any anomalies such as crashes, increased response times, or high error rates.
+Gradual Rollout: If no issues are detected, the deployment is gradually expanded to a larger group (e.g., 10%, 20%, etc.).
+Full Release or Rollback: If the new version proves stable, it's rolled out to 100% of users. If issues are found, the new version is rolled back to the previous version.
+
+![image](https://github.com/user-attachments/assets/a9845049-2fad-4de7-9381-b692b8448fb3)
+
+
+Q) What do you do if the deploy app is faulty?
+
+Using Blue green deployment startegy we can again fallback to the earlier app.
+
+
+Q)
 
